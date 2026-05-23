@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Window from "../components/Window.svelte";
+import Content from "../content/pages/how-it-works.md";
+import { GITHUB_URL } from "../consts";
+---
+
+<Layout
+	title="How It Works"
+	description="How Design OS organizes design context, skills, and outputs into a repeatable workflow.">
+	<div class="layout__grid how-it-works">
+		<div class="layout__cell">
+			<Window title="How It Works" order={0} titleTag="h1" client:load>
+				<div class="container rte">
+					<Content />
+				</div>
+			</Window>
+		</div>
+		<div class="layout__cell">
+			<Window title="Get the repo" titleTag="span" order={1} client:load>
+				<div class="stack">
+					<h2>Ready to try it?</h2>
+					<p>
+						Clone the repo, fill your context library, and run your first
+						command.
+					</p>
+					<a class="button--ui" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+						<span class="button--ui__content">Open on GitHub -&gt;</span>
+					</a>
+					<a class="button--ui" href="/docs/">
+						<span class="button--ui__content">Setup guide -&gt;</span>
+					</a>
+				</div>
+			</Window>
+		</div>
+	</div>
+</Layout>
+
+<style lang="scss">
+	@media (min-width: 62em) {
+		.how-it-works {
+			grid-template-columns: 1fr 50ch;
+			gap: 1rem;
+		}
+	}
+</style>

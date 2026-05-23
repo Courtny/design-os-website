@@ -1,127 +1,79 @@
 ---
-import { getPosts } from "../scripts/data";
 import Layout from "../layouts/Layout.astro";
 import Window from "../components/Window.svelte";
-import ClientsList from "../components/ClientsList.svelte";
-import Posts from "../components/Posts.svelte";
-import Image from "@components/Image.astro";
-
-const posts = await getPosts();
-
-const limitedPosts = posts.slice(0, 8);
+import Intro from "../content/pages/home-intro.md";
+import Philosophy from "../content/pages/home-philosophy.md";
+import Features from "../content/pages/home-features.md";
+import { GITHUB_URL } from "../consts";
 ---
 
 <Layout>
 	<div class="layout__grid home">
 		<h1 class="page-title">Home</h1>
 		<div class="layout__cell home__intro">
-			<Window title="Introduction" order={0} client:load>
-				<div class="portrait__wrapper">
-					<img
-						class="portrait"
-						src="/pixels/portrait.png"
-						alt="Pixel art portrait of Nic Chan in purple. She is a long-haired East Asian woman with a neutral expresion."
-						width="150"
-						height="150"
-					/>
-				</div>
-				<div class="stack">
-					<p>
-						Hi, I'm Nic Chan and I am an independent front-end web developer.
-					</p>
-					<p>
-						I've just launched Primavera, an accessible, high-end Shopify theme.
-					</p>
-					<Image
-						src="https://res.cloudinary.com/nicchan/image/upload/v1747196547/og-image-banner.jpg"
-						alt="Five different looks for the same Shopify theme for different industries. From left to right, a bright pastel beauty store, a black and white minimalist fashion store, an elegant purple and cream jewellry store, an earthy and organic ceramics store, and a bright primary color, brutalist-inspired furniture store."
-						width="1200"
-						height="630"
-					/>
-					<a
-						class="button--ui"
-						href="https://themes.shopify.com/themes/primavera/styles/precision">
-						<span class="button--ui__content"> Check out Primavera -&gt; </span>
+			<Window title="Design OS" order={0} titleTag="h1" client:load>
+				<div class="stack rte">
+					<Intro />
+					<a class="button--ui" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+						<span class="button--ui__content">View on GitHub -&gt;</span>
+					</a>
+					<a class="button--ui" href="/docs/">
+						<span class="button--ui__content">Get started -&gt;</span>
 					</a>
 				</div>
 			</Window>
 		</div>
-		<div class="layout__cell home__clients">
-			<Window title="Clients" style="--max-width: 40rem;" order={1} client:load>
-				<div class="stack">
-					<p>
-						I help companies around the world build fast, accessible and
-						user-friendly web experiences.
-					</p>
-					<ClientsList />
-					<a class="button--ui" href="/services">
-						<span class="button--ui__content">
-							Find out more about what I do -&gt;
-						</span>
-					</a>
+		<div class="layout__cell home__philosophy">
+			<Window title="Philosophy" style="--max-width: 40rem;" order={1} client:load>
+				<div class="stack rte">
+					<Philosophy />
 				</div>
 			</Window>
 		</div>
-		<div class="layout__cell home__posts">
+		<div class="layout__cell home__features">
 			<Window
-				title="Recent Posts"
+				title="What You Get"
 				style="--max-width: 60ch; --inline-start: 2rem;"
 				order={2}
 				client:load>
-				<Posts posts={limitedPosts} />
-				<a class="button--ui" href="/blog ">
-					<span class="button--ui__content">Read more blog posts -&gt;</span>
-				</a>
+				<div class="stack rte">
+					<Features />
+					<a class="button--ui" href="/how-it-works/">
+						<span class="button--ui__content">See how it works -&gt;</span>
+					</a>
+				</div>
 			</Window>
 		</div>
 	</div>
-
-	<style lang="scss">
-		.portrait__wrapper {
-			padding-block-end: 0.5rem;
-		}
-
-		.portrait {
-			--border-color: var(--color-black);
-			display: block;
-			@include pixel-borders();
-		}
-
-		@media (min-width: 38em) {
-			.portrait__wrapper {
-				padding-inline-start: 0.5rem;
-				padding-block-start: 0.25rem;
-				float: right;
-			}
-		}
-
-		@media (min-width: 62em) {
-			.home {
-				grid-template-columns: min(50%, 60ch) 1fr;
-				grid-template-rows: 5rem 16rem 1fr;
-				gap: 1rem;
-			}
-
-			h1 {
-				margin-block-end: 0;
-			}
-
-			.home__intro {
-				grid-column: 1;
-				grid-row: 2 / 4;
-				justify-self: start;
-			}
-
-			.home__clients {
-				padding-inline-start: var(--space-m);
-				grid-column: 2;
-				grid-row: 1 / 3;
-			}
-
-			.home__posts {
-				grid-column: 2;
-				grid-row: 3 / 4;
-			}
-		}
-	</style>
 </Layout>
+
+<style lang="scss">
+	@media (min-width: 62em) {
+		.home {
+			grid-template-columns: min(50%, 60ch) 1fr;
+			grid-template-rows: 5rem 16rem 1fr;
+			gap: 1rem;
+		}
+
+		h1 {
+			margin-block-end: 0;
+		}
+
+		.home__intro {
+			grid-column: 1;
+			grid-row: 2 / 4;
+			justify-self: start;
+		}
+
+		.home__philosophy {
+			padding-inline-start: var(--space-m);
+			grid-column: 2;
+			grid-row: 1 / 3;
+		}
+
+		.home__features {
+			grid-column: 2;
+			grid-row: 3 / 4;
+		}
+	}
+</style>

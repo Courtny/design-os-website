@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Window from "../../components/Window.svelte";
+import Content from "../../content/pages/setup.md";
+import { GITHUB_URL } from "../../consts";
+---
+
+<Layout
+	title="Setup"
+	description="Quick start guide for Design OS in Claude Code and Cursor.">
+	<div class="layout__grid setup">
+		<div class="layout__cell">
+			<Window title="Setup" order={0} titleTag="h1" client:load>
+				<div class="container rte">
+					<Content />
+				</div>
+			</Window>
+		</div>
+		<div class="layout__cell">
+			<Window title="Clone the repo" titleTag="span" order={1} client:load>
+				<div class="stack">
+					<h2>Get Design OS</h2>
+					<p>
+						Design OS is open source under the MIT license. Clone it, customize
+						your context library, and start designing with AI that knows your
+						system.
+					</p>
+					<a class="button--ui" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+						<span class="button--ui__content">Clone on GitHub -&gt;</span>
+					</a>
+				</div>
+			</Window>
+		</div>
+	</div>
+</Layout>
+
+<style lang="scss">
+	@media (min-width: 62em) {
+		.setup {
+			grid-template-columns: 1fr 50ch;
+			gap: 1rem;
+		}
+	}
+</style>

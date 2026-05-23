@@ -1,16 +1,22 @@
 ---
 import "../styles/app.scss";
+import { SITE_DESCRIPTION } from "../consts";
 
 interface Props {
 	title: string;
-	description: string;
+	description?: string;
 	image?: string;
+	alt?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description = "Nic Chan is a front-end web developer who specializes in design systems, accessibility and Shopify.", image, alt} = Astro.props;
-const { DEV } = import.meta.env;
+const {
+	title,
+	description = SITE_DESCRIPTION,
+	image,
+	alt,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -18,8 +24,7 @@ const { DEV } = import.meta.env;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<link href="https://github.com/nchan0154" rel="me">
-<link rel="webmention" href="https://webmention.io/www.nicchan.me/webmention" />
+
 <!-- Font preloads -->
 <link
 	rel="preload"
@@ -49,16 +54,12 @@ const { DEV } = import.meta.env;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{image &&
-	<meta property="og:image" content={image}/>
-	<meta property="og:image:alt" content={alt}/>
+{
+	image && (
+		<>
+			<meta property="og:image" content={image} />
+			<meta property="og:image:alt" content={alt} />
+		</>
+	)
 }
-<link rel="alternate" type="application/rss+xml"
-  title="Nic Chan"
-  href="/feed.xml" />
-
-{!DEV && (
-	<script defer data-domain="nicchan.me" src="https://plausible.io/js/script.js"></script>
-	<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-)}
-<meta name="theme-color" content="#bdb6c4">
+<meta name="theme-color" content="#bdb6c4" />

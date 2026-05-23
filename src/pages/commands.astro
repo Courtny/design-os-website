@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Window from "../components/Window.svelte";
+import Content from "../content/pages/commands.md";
+---
+
+<Layout
+	title="Commands"
+	description="All Design OS slash commands for Claude Code and Cursor skills.">
+	<div class="layout__grid commands">
+		<div class="layout__cell">
+			<Window title="Commands" order={0} titleTag="h1" client:load>
+				<div class="container rte">
+					<Content />
+				</div>
+			</Window>
+		</div>
+	</div>
+</Layout>
+
+<style lang="scss">
+	.commands {
+		max-inline-size: 75ch;
+	}
+</style>

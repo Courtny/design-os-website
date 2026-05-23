@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Window from "../components/Window.svelte";
+import Content from "../content/pages/context-library.md";
+---
+
+<Layout
+	title="Context Library"
+	description="What to customize in the Design OS context library and where to start.">
+	<div class="layout__grid context-library">
+		<div class="layout__cell">
+			<Window title="Context Library" order={0} titleTag="h1" client:load>
+				<div class="container rte">
+					<Content />
+				</div>
+			</Window>
+		</div>
+	</div>
+</Layout>
+
+<style lang="scss">
+	.context-library {
+		max-inline-size: 75ch;
+	}
+</style>

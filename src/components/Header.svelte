@@ -5,36 +5,31 @@
 			link: "/",
 			icon: "home",
 		},
-		// note to self remember to redirect projects page
 		{
-			text: "Work",
-			link: "/work/",
-			icon: "work",
-		},
-		{
-			text: "Blog",
-			link: "/blog/",
-			icon: "blog",
-		},
-		{
-			text: "Services",
-			link: "/services/",
-			icon: "services",
-		},
-		{
-			text: "Art",
-			link: "/art/",
-			icon: "art",
-		},
-		{
-			text: "About",
-			link: "/about/",
+			text: "How It Works",
+			link: "/how-it-works/",
 			icon: "about",
 		},
 		{
-			text: "Contact",
-			link: "/contact/",
-			icon: "contact",
+			text: "Commands",
+			link: "/commands/",
+			icon: "blog",
+		},
+		{
+			text: "Context Library",
+			link: "/context-library/",
+			icon: "work",
+		},
+		{
+			text: "Setup",
+			link: "/docs/",
+			icon: "services",
+		},
+		{
+			text: "GitHub",
+			link: "https://github.com/Courtny/design-os",
+			icon: "rss",
+			external: true,
 		},
 	];
 </script>
@@ -49,7 +44,12 @@
 		<ul class="nav__list">
 			{#each links as link}
 				<li class="nav__item">
-					<a class="nav__link" href={link.link}>
+					<a
+						class="nav__link"
+						href={link.link}
+						{...(link.external
+							? { target: "_blank", rel: "noopener noreferrer" }
+							: {})}>
 						{#if link.icon}
 							<svg class="nav__icon">
 								<use href={`#icon-${link.icon}`} />
@@ -62,13 +62,6 @@
 				</li>
 			{/each}
 		</ul>
-		<div class="focus-wrapper tinylytics-hits-wrapper">
-			<a
-				class="tinylytics-hits"
-				href="https://tinylytics.app/public/thT44b6cyEs19PvjwWsT">
-				<span class="tinylytics_hits"></span> hits
-			</a>
-		</div>
 	</nav>
 </header>
 
@@ -116,29 +109,6 @@
 		line-height: 1.3;
 		background-color: var(--color-nav-link-bg);
 		color: var(--color-nav-link-text);
-	}
-
-	.tinylytics-hits-wrapper {
-		margin-block-start: 0.5rem;
-		--offset: 0.25rem;
-
-		&:has(.tinylytics_hits:empty) {
-			visibility: hidden;
-		}
-	}
-
-	.tinylytics-hits {
-		display: inline-block;
-		--border-color: currentColor;
-		padding: var(--border-thickness);
-		inline-size: fit-content;
-		position: relative;
-		z-index: 1;
-		line-height: 1;
-		background-color: var(--color-lavender);
-		color: var(--color-violet-darker);
-		text-decoration: none;
-		@include pixel-borders();
 	}
 
 	@media (min-height: 40em) {
