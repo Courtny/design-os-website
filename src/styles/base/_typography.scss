@@ -60,7 +60,7 @@ h4 + .ha {
 	background: linear-gradient(
 		135deg,
 		var(--color-page-title) 50%,
-		var(--color-magenta-darkest)
+		light-dark(var(--color-magenta-darkest), var(--color-matrix-darkest))
 	);
 	background-clip: text;
 	color: transparent;

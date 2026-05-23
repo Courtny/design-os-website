@@ -20,6 +20,14 @@
 	--color-violet-lightest: #7d7db0;
 	--color-lavender: #a3a3c7;
 	--color-lavender-lighter: #c6c6dc;
+	--color-matrix-darkest: #000a04;
+	--color-matrix-darker: #001208;
+	--color-matrix-dark: #0a2812;
+	--color-matrix: #1a5c28;
+	--color-matrix-light: #3d9b45;
+	--color-matrix-lighter: #5cff3a;
+	--color-matrix-glow: #b8ff6e;
+	--color-matrix-bright: #e8ffd0;
 	--color-black: #000;
 	--color-gray-darkest: #5a6064;
 	--color-gray-darker: #878894;
@@ -77,6 +85,10 @@
 
 	--color-link-underline: var(--color-magenta);
 	--color-text-accent: var(--color-mauve);
+
+	--color-pixel-blast: #9c7a9d;
+	--color-pixel-blast-density: 1.1;
+	--color-pixel-blast-edge-fade: 0.25;
 	--color-text-accent-bg: var(--color-mauve-lighter);
 	--color-text-heading: var(--color-violet-lighter);
 	--color-text-subheading: var(--color-magenta-darker);
@@ -144,128 +156,201 @@
 
 @supports (color: light-dark(white, black)) {
 	:root {
+		--color-bg: light-dark(#716eba, var(--color-matrix-darker));
+		--color-settings-bg-hover: light-dark(
+			var(--color-teal-lightest),
+			var(--color-matrix-dark)
+		);
+
+		--color-button-ui-bg: light-dark(
+			var(--color-gray-lighter),
+			var(--color-matrix-dark)
+		);
+		--color-button-ui-shadow: light-dark(
+			var(--color-gray-darker),
+			var(--color-matrix-darkest)
+		);
+		--color-button-ui-highlight: light-dark(
+			var(--color-white),
+			var(--color-matrix-light)
+		);
+		--color-button-ui-text: light-dark(
+			var(--color-violet),
+			var(--color-matrix-bright)
+		);
+		--color-button-ui-hover-bg: light-dark(
+			var(--color-mauve-lighter),
+			var(--color-matrix)
+		);
+
+		--color-page-title: light-dark(
+			var(--color-violet-darker),
+			var(--color-matrix-glow)
+		);
+		--color-page-title-accent: light-dark(
+			var(--color-teal-darker),
+			var(--color-matrix)
+		);
+		--color-page-subtitle-accent: light-dark(
+			var(--color-mauve-lighter),
+			var(--color-matrix-light)
+		);
+
+		--color-footer-bg: light-dark(var(--color-gray), var(--color-matrix-dark));
+		--color-footer-bg-active: light-dark(
+			var(--color-mauve-lighter),
+			var(--color-matrix)
+		);
+
+		--border-color: light-dark(
+			var(--color-violet-darker),
+			var(--color-matrix-light)
+		);
+
+		--color-pixel-blast: light-dark(#9c7a9d, var(--color-matrix-lighter));
+		--color-pixel-blast-density: light-dark(1.1, 1.25);
+		--color-pixel-blast-edge-fade: light-dark(0.25, 0.15);
+
 		--color-nav-link-bg: light-dark(
 			var(--color-mauve-lightest),
-			var(--color-violet)
+			var(--color-matrix-dark)
 		);
-		--color-nav-link-text: light-dark(var(--color-violet), var(--color-white));
-		--color-outline: light-dark(var(--color-violet-darker), var(--color-white));
+		--color-nav-link-text: light-dark(
+			var(--color-violet),
+			var(--color-matrix-bright)
+		);
+		--color-outline: light-dark(
+			var(--color-violet-darker),
+			var(--color-matrix-lighter)
+		);
 		--color-settings-bg: light-dark(
 			var(--color-gray-lighter),
-			var(--color-gray)
+			var(--color-matrix-dark)
 		);
 
 		--color-card-bg: light-dark(
 			var(--color-gray-lighter),
-			var(--color-violet-lighter)
+			var(--color-matrix-dark)
 		);
 		--color-card-shadow: light-dark(
 			var(--color-gray-darker),
-			var(--color-violet)
+			var(--color-matrix-darkest)
 		);
 		--color-card-highlight: light-dark(
 			var(--color-white),
-			var(--color-gray-darker)
+			var(--color-matrix-light)
 		);
-		--color-card-text: light-dark(var(--color-violet), var(--color-off-white));
+		--color-card-text: light-dark(
+			var(--color-violet),
+			var(--color-matrix-bright)
+		);
 		--color-card-hover-bg: light-dark(
 			var(--color-mauve-lighter),
-			var(--color-violet)
+			var(--color-matrix)
 		);
 		--color-card-border: light-dark(
 			var(--color-violet-lighter),
-			var(--color-violet-darker)
+			var(--color-matrix-light)
 		);
-		--color-card-tag-bg: light-dark(var(--color-lavender), var(--color-violet));
-		--color-card-tag-text: light-dark(var(--color-black), var(--color-white));
+		--color-card-tag-bg: light-dark(
+			var(--color-lavender),
+			var(--color-matrix)
+		);
+		--color-card-tag-text: light-dark(
+			var(--color-black),
+			var(--color-matrix-bright)
+		);
 
-		--color-window-bg: light-dark(var(--color-white), var(--color-violet));
+		--color-window-bg: light-dark(
+			var(--color-white),
+			var(--color-matrix-dark)
+		);
 		--color-window-text: light-dark(
 			var(--color-violet),
-			var(--color-lavender-lighter)
+			var(--color-matrix-bright)
 		);
 		--color-window-header-bg: linear-gradient(
 			to right,
-			light-dark(var(--color-lavender), var(--color-magenta-darker)),
-			light-dark(var(--color-teal), var(--color-teal-darkest))
+			light-dark(var(--color-lavender), var(--color-matrix)),
+			light-dark(var(--color-teal), var(--color-matrix-darker))
 		);
 		--color-window-header-text: light-dark(
 			var(--color-violet),
-			var(--color-white)
+			var(--color-matrix-bright)
 		);
 
-		--color-panel-bg: light-dark(
-			var(--color-gray),
-			var(--color-violet-lighter)
-		);
+		--color-panel-bg: light-dark(var(--color-gray), var(--color-matrix-dark));
 		--color-panel-input-bg: light-dark(
 			var(--color-gray-lighter),
-			var(--color-violet)
+			var(--color-matrix-darker)
 		);
 
 		--color-testimonial-name: light-dark(
 			var(--color-violet-lighter),
-			var(--color-magenta-lighter)
+			var(--color-matrix-glow)
 		);
 		--color-testimonial-bg: light-dark(
 			var(--color-mauve-lightest),
-			var(--color-violet-lighter)
+			var(--color-matrix-dark)
 		);
 		--color-response-bg: light-dark(
 			var(--color-teal-lighter),
-			var(--color-teal-darkest)
+			var(--color-matrix-darker)
 		);
 		--color-response-name: light-dark(
 			var(--color-violet),
-			var(--color-teal-lighter)
+			var(--color-matrix-lighter)
 		);
 
 		--color-link-underline: light-dark(
 			var(--color-magenta),
-			var(--color-mauve-lighter)
+			var(--color-matrix-lighter)
 		);
-		--color-text-accent: var(--color-mauve);
+		--color-text-accent: light-dark(var(--color-mauve), var(--color-matrix-lighter));
 		--color-text-accent-bg: light-dark(
 			var(--color-mauve-lighter),
-			var(--color-mauve-darker)
+			var(--color-matrix-darker)
 		);
 		--color-text-heading: light-dark(
 			var(--color-violet-lighter),
-			var(--color-mauve-lightest)
+			var(--color-matrix-glow)
 		);
 		--color-text-subheading: light-dark(
 			var(--color-magenta-darker),
-			var(--color-magenta-lighter)
+			var(--color-matrix-lighter)
 		);
 		--color-text-highlight: light-dark(
 			var(--color-teal-lighter),
-			var(--color-violet-darker)
+			var(--color-matrix-darkest)
 		);
-		--color-box-border: light-dark(var(--color-lavender), var(--color-black));
+		--color-box-border: light-dark(
+			var(--color-lavender),
+			var(--color-matrix-light)
+		);
 		--color-box-bg: light-dark(
 			var(--color-off-white),
-			var(--color-violet-darker)
+			var(--color-matrix-darker)
 		);
 		--color-box-text: light-dark(
 			var(--color-violet-lighter),
-			var(--color-lavender)
+			var(--color-matrix-glow)
 		);
 		--color-list-bg-focus: light-dark(
 			var(--color-magenta-lighter),
-			var(--color-teal-darkest)
+			var(--color-matrix-dark)
 		);
 
 		--color-accent-text-1: light-dark(
 			var(--color-teal-lighter),
-			var(--color-teal-darkest)
+			var(--color-matrix-lighter)
 		);
 		--color-accent-text-2: light-dark(
 			var(--color-magenta-lighter),
-			var(--color-magenta-darker)
+			var(--color-matrix-glow)
 		);
 		--color-sparkle: light-dark(
 			var(--color-magenta),
-			var(--color-lavender-lighter)
+			var(--color-matrix-lighter)
 		);
 	}
 

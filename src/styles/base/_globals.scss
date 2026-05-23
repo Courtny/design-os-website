@@ -7,9 +7,9 @@
 ::selection {
 	background-color: light-dark(
 		var(--color-mauve-darkest),
-		var(--color-mauve-lightest)
+		var(--color-matrix-dark)
 	);
-	color: light-dark(var(--color-white), var(--color-violet));
+	color: light-dark(var(--color-white), var(--color-matrix-bright));
 }
 
 html,
@@ -17,11 +17,14 @@ body {
 	min-block-size: 100%;
 	font-family: var(--font-base);
 	line-height: 1.6;
+}
+
+html {
 	background-color: var(--color-bg);
-	background-image: url("https://res.cloudinary.com/nicchan/image/upload/f_auto/bg-5.png");
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
+}
+
+body {
+	background-color: transparent;
 }
 
 html {

@@ -22,7 +22,7 @@
 		content: "";
 		position: absolute;
 		inset: 0;
-		outline: var(--border-thickness) solid var(--color-violet-darker);
+		outline: var(--border-thickness) solid var(--color-outline);
 		outline-offset: var(--offset);
 		z-index: 1;
 		pointer-events: none;

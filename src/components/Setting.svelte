@@ -11,6 +11,8 @@
 			if (localStorageValue && values.includes(localStorageValue)) {
 				currentValue = localStorageValue;
 				setValue(currentValue, namespace);
+			} else if (!localStorageValue) {
+				setValue(defaultValue, namespace);
 			}
 		} catch {
 			console.log("Could not access setting from localstorage.");
@@ -19,7 +21,11 @@
 
 	function setValue(value, namespace) {
 		if (value === "System preference") {
-			localStorage.removeItem(preferenceNamespace);
+			try {
+				localStorage.setItem(preferenceNamespace, value);
+			} catch {
+				console.log("Setting could not be saved to localstorage.");
+			}
 			document.documentElement.removeAttribute(`data-user-${namespace}`);
 		} else {
 			try {

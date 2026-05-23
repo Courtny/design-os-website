@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.svelte";
 import Footer from "../components/Footer.astro";
 import Sprites from "@components/Sprites.astro";
+import PixelBlastBackground from "../components/react/PixelBlastBackground.jsx";
 import { SITE_TITLE } from "../consts";
 
 const { title, description, image, alt } = Astro.props;
@@ -21,6 +22,16 @@ const { title, description, image, alt } = Astro.props;
 						`data-user-scheme`,
 						localStorageValue.toLowerCase()
 					);
+			}
+			function getMotion(document) {
+				const stored = localStorage.getItem("preference-motion");
+				if (stored === "Disabled") {
+					document.documentElement.setAttribute("data-user-motion", "disabled");
+				} else if (stored === "System preference") {
+					document.documentElement.removeAttribute("data-user-motion");
+				} else {
+					document.documentElement.setAttribute("data-user-motion", "enabled");
+				}
 			}
 			async function fontsLoaded() {
 				let ready = await document.fonts.ready;
@@ -43,6 +54,7 @@ const { title, description, image, alt } = Astro.props;
 			}
 			document.addEventListener("astro:before-swap", (event) => {
 				getColor(event.newDocument);
+				getMotion(event.newDocument);
 			});
 			document.addEventListener("astro:after-swap", (event) => {
 				fontsLoaded(document);
@@ -52,6 +64,7 @@ const { title, description, image, alt } = Astro.props;
 				bindScroll();
 			});
 			getColor(document);
+			getMotion(document);
 			fontsLoaded();
 		</script>
 		<BaseHead
@@ -63,6 +76,7 @@ const { title, description, image, alt } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body class="layout">
+		<PixelBlastBackground client:load />
 		<Header />
 		<main class="layout__main" id="main" tabindex="-1" aria-label="Main">
 			<slot />

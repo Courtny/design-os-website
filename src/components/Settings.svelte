@@ -74,7 +74,7 @@
 				namespace="motion"
 				label="Animation"
 				values={["System preference", "Enabled", "Disabled"]}
-				defaultValue={"System preference"} />
+				defaultValue={"Enabled"} />
 		</div>
 		<div>
 			<a
