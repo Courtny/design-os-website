@@ -28,7 +28,7 @@
 		{
 			text: "GitHub",
 			link: "https://github.com/Courtny/design-os",
-			icon: "rss",
+			icon: "github",
 			external: true,
 		},
 	];
